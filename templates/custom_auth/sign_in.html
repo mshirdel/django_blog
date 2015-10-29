@@ -1,0 +1,23 @@
+{% include 'django_blog/page_head.html' %}
+<div class="row">
+    <div class="span4"></div>
+    <div class="span4">
+        {% if error_msg %}
+            <div class="alert alert-error">{{ error_msg }}</div>
+        {% endif %}
+        <form method="post" action="{% url 'custom_auth:sign_in' %}">
+            <legend>ورود به سیستم</legend>
+            {% csrf_token %}
+            {{ form }}
+            {% if next_page %}
+                <input type="hidden" name="next_page" value="{{ next_page }}">
+            {% endif %}
+            <input type="submit" value="ورود" class="btn btn-primary btn-block">
+            <div>عضو نیستید؟</div>
+            <a href="{% url 'custom_auth:sign_up' %}">ثبت نام کنید</a>
+        </form>
+    </div>
+    <div class="span4"></div>
+</div>
+
+{% include 'django_blog/page_end.html' %}
