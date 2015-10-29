@@ -1,4 +1,7 @@
 {% include 'django_blog/page_head.html' %}
+{% if success_msg %}
+    <div class="alert alert-success">{{ success_msg }}</div>
+{% endif %}
 <a href="{% url 'new_post' %}">پست جدید</a>
 
 <div>

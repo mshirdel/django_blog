@@ -24,5 +24,6 @@ urlpatterns = [
     url(r'^ua/', include(custom_auth_urls, namespace='custom_auth')),
     url(r'^$', views.index, name='index'),
     url(r'^New Post/', views.new_post, name='new_post'),
-    url(r'^Admin Post/', views.admin_post, name='admin_post')
+    url(r'^Admin Post/', views.admin_post, name='admin_post'),
+    url(r'^New Post Save/', views.new_post_save, name='new_post_save')
 ]
