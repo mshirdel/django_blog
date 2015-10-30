@@ -3,8 +3,15 @@
     <div class="alert alert-success">{{ success_msg }}</div>
 {% endif %}
 <a href="{% url 'new_post' %}">پست جدید</a>
-
-<div>
-    <p>List of posts goes here</p>
-</div>
+<br/>
+<hr>
+{% if all_posts %}
+    <h4>آخرین پست های درج شده</h4>
+    {% for post in all_posts %}
+        <a href="{% url 'post_details' post.id %}">{{ post.title }}</a>
+        <br/>
+    {% endfor %}
+{% else %}
+    <p>پستی درح نشده است</p>
+{% endif %}
 {% include 'django_blog/page_end.html' %}

@@ -1,10 +1,10 @@
 {% include 'django_blog/page_head.html' %}
 <!-- Main hero unit for a primary marketing message or call to action -->
-      <div class="hero-unit">
-        <h1>سلام، دنیا!</h1>
-        <p>این الگو یک فروشگاه یا یک سایت ساده است که شامل بخشی که ما آن را بخش قهرمان می‌نامیم، است. بخشی که محتوای اصلی سایت را دربر دارد همچنین این سایت دارای سه بخش محتوایی دیگر است. از این الگو آغاز کنید تا الگوهای زیباتر و واحدی را بسازید.</p>
-        <p><a href= "#" class="btn btn-primary btn-large">اطلاعات بیشتر &raquo;</a></p>
-      </div>
+      <!--<div class="hero-unit">-->
+        <!--<h1>سلام، دنیا!</h1>-->
+        <!--<p>این الگو یک فروشگاه یا یک سایت ساده است که شامل بخشی که ما آن را بخش قهرمان می‌نامیم، است. بخشی که محتوای اصلی سایت را دربر دارد همچنین این سایت دارای سه بخش محتوایی دیگر است. از این الگو آغاز کنید تا الگوهای زیباتر و واحدی را بسازید.</p>-->
+        <!--<p><a href= "#" class="btn btn-primary btn-large">اطلاعات بیشتر &raquo;</a></p>-->
+      <!--</div>-->
 
       <!-- Example row of columns -->
       <div class="row">
@@ -24,5 +24,14 @@
           <p><a class="btn" href="#">جزئیات بیشتر &raquo;</a></p>
         </div>
       </div>
+
+    <div ng-controller="blogCtrl">
+        <table>
+          <tr ng-repeat="post in all_post">
+            <td>{$ post.Name $}</td>
+            <td>{$ post.Country $}</td>
+          </tr>
+        </table>
+    </div>
 
 {% include 'django_blog/page_end.html' %}

@@ -15,9 +15,10 @@
       }
     </style>
     <link href=" {% static 'django_blog/css/bootstrap-responsive.min.css' %}" rel="stylesheet" media="screen">
-
+    <script src="{% static 'django_blog/js/angular.min.js' %}"></script>
+    <script src="{% static 'django_blog/js/django_app.js' %}"></script>
 </head>
-<body>
+<body ng-app="django_blog">
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="navbar-inner">
             <div class="container">

@@ -1,0 +1,7 @@
+{% include 'django_blog/page_head.html' %}
+{% if post %}
+    <h4>{{ post.title }}</h4> {{ post.create_date }}
+    <hr>
+    {{ post.content }}
+{% endif %}
+{% include 'django_blog/page_end.html' %}

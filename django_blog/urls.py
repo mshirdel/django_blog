@@ -23,7 +23,9 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^ua/', include(custom_auth_urls, namespace='custom_auth')),
     url(r'^$', views.index, name='index'),
-    url(r'^New Post/', views.new_post, name='new_post'),
-    url(r'^Admin Post/', views.admin_post, name='admin_post'),
-    url(r'^New Post Save/', views.new_post_save, name='new_post_save')
+    url(r'^blog/new/', views.new_post, name='new_post'),
+    url(r'^blog/admin/', views.admin_post, name='admin_post'),
+    url(r'^blog/Save/', views.new_post_save, name='new_post_save'),
+    url(r'^blog/post/(?P<post_id>[0-9]+)', views.post_details, name='post_details'),
+    url(r'^blog/list/', views.get_post_list, name='post_list'),
 ]

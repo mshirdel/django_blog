@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
+from django.core import serializers
+from django.http import HttpResponse
 
 from forms import NewPostForm
 from models import Post
@@ -20,7 +22,19 @@ def new_post(request):
 
 @login_required
 def admin_post(request):
-    return render(request, 'django_blog/admin_post.html')
+    all_posts = Post.objects.all()
+    return render(request, 'django_blog/admin_post.html', {'all_posts': all_posts})
+
+
+def post_details(request, post_id):
+    post = get_object_or_404(Post, pk=post_id)
+    return render(request, 'django_blog/post_details.html', {'post': post})
+
+
+def get_post_list(request):
+    all_posts = Post.objects.all()
+    data = serializers.serialize('json', all_posts)
+    return HttpResponse(data)
 
 
 @login_required
