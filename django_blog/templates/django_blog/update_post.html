@@ -2,10 +2,9 @@
 {% if error_msg %}
     <div class="alert alert-error alert-dismissible">{{ error_msg }}</div>
 {% endif %}
-<form method="post" action="{% url 'new_post_save' %}">
+<form method="post" action="{% url 'update_post_save' post_id %}">
         {% csrf_token %}
         {{ form }}
-        <input type="submit" value="ثبت" class="btn btn-primary">
-
+        <input type="submit" value="ویرایش" class="btn btn-primary">
     </form>
 {% include 'django_blog/page_end.html' %}

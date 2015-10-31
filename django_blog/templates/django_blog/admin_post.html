@@ -1,17 +1,42 @@
 {% include 'django_blog/page_head.html' %}
 {% if success_msg %}
-    <div class="alert alert-success">{{ success_msg }}</div>
+    <div class="alert alert-success alert-dismissible" role="alert">{{ success_msg }}</div>
 {% endif %}
-<a href="{% url 'new_post' %}">پست جدید</a>
+<a href="{% url 'new_post' %}" class="btn btn-primary">پست جدید</a>
 <br/>
 <hr>
-{% if all_posts %}
-    <h4>آخرین پست های درج شده</h4>
-    {% for post in all_posts %}
-        <a href="{% url 'post_details' post.id %}">{{ post.title }}</a>
-        <br/>
-    {% endfor %}
-{% else %}
-    <p>پستی درح نشده است</p>
-{% endif %}
+
+
+
+    <div ng-controller="blogCtrl">
+        <h4>آخرین پست های درج شده</h4>
+        <table class="table table-striped">
+            <tr ng-repeat="post in all_post">
+                <td>{$ post.title $}</td>
+                <td>
+                    <a class="btn btn-default" ng-click="update(post.id)" role="button">ویرایش</a>
+                    <a class="btn btn-danger" ng-click="confirm(post.id)" data-toggle="modal"  role="button">حذف</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+<div class="modal fade" id="myModal" ng-controller="blogCtrl">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">حدف پست</h4>
+            </div>
+            <div class="modal-body">
+                <p>برای حدف اطمینان دارید؟</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">لغو</button>
+                <button type="button" class="btn btn-primary" ng-click="deletePost()">تایید</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
 {% include 'django_blog/page_end.html' %}

@@ -1,37 +1,22 @@
 {% include 'django_blog/page_head.html' %}
-<!-- Main hero unit for a primary marketing message or call to action -->
-      <!--<div class="hero-unit">-->
-        <!--<h1>سلام، دنیا!</h1>-->
-        <!--<p>این الگو یک فروشگاه یا یک سایت ساده است که شامل بخشی که ما آن را بخش قهرمان می‌نامیم، است. بخشی که محتوای اصلی سایت را دربر دارد همچنین این سایت دارای سه بخش محتوایی دیگر است. از این الگو آغاز کنید تا الگوهای زیباتر و واحدی را بسازید.</p>-->
-        <!--<p><a href= "#" class="btn btn-primary btn-large">اطلاعات بیشتر &raquo;</a></p>-->
-      <!--</div>-->
 
-      <!-- Example row of columns -->
-      <div class="row">
-        <div class="span4">
-          <h2>تیتر</h2>
-          <p>آزادی برای استفاده از برنامه به معنای آزادی هر شخص و یا سازمانی برای استفاده از آن برنامه بر روی هر سیستم کامپیوتری، برای هر کاری، و بدون نیاز به هر گونه ارتباط بعدی با توسعه‌دهنده و یا هر نهاد خاصی می‌باشد. </p>
-          <p><a class="btn" href="#">جزئیات بیشتر &raquo;</a></p>
+    <div class="row">
+        <div class="span2"></div>
+        <div class="span8" ng-controller="blogCtrl">
+            <div ng-repeat="post in all_post">
+                <a href="#" ng-click="postDetails(post.id)">{$ post.title $}</a>
+                <br/>
+                {$ post.create_date $}
+                <p align="justify">
+                    {$ shortText(post.content) $}
+                </p>
+                <input type="button" value="ادامه" class="btn" ng-click="postDetails(post.id)">
+                <br/>
+                <hr/>
+            </div>
         </div>
-        <div class="span4">
-          <h2>تیتر</h2>
-          <p>آزادی برای استفاده از برنامه به معنای آزادی هر شخص و یا سازمانی برای استفاده از آن برنامه بر روی هر سیستم کامپیوتری، برای هر کاری، و بدون نیاز به هر گونه ارتباط بعدی با توسعه‌دهنده و یا هر نهاد خاصی می‌باشد. </p>
-          <p><a class="btn" href="#">جزئیات بیشتر &raquo;</a></p>
-       </div>
-        <div class="span4">
-          <h2>تیتر</h2>
-          <p>آزادی برای استفاده از برنامه به معنای آزادی هر شخص و یا سازمانی برای استفاده از آن برنامه بر روی هر سیستم کامپیوتری، برای هر کاری، و بدون نیاز به هر گونه ارتباط بعدی با توسعه‌دهنده و یا هر نهاد خاصی می‌باشد.</p>
-          <p><a class="btn" href="#">جزئیات بیشتر &raquo;</a></p>
-        </div>
-      </div>
-
-    <div ng-controller="blogCtrl">
-        <table>
-          <tr ng-repeat="post in all_post">
-            <td>{$ post.Name $}</td>
-            <td>{$ post.Country $}</td>
-          </tr>
-        </table>
+        <div class="span2"></div>
     </div>
+
 
 {% include 'django_blog/page_end.html' %}
